@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finca Lérida — Recorrido 360° y Garaje (Unity 6 / Android)</title>
+  <style>
+    :root {
+      --bg: #0f1714;
+      --surface: #17221d;
+      --surface-2: #1f2e27;
+      --text: #eef4f0;
+      --muted: #b4c4bb;
+      --accent: #4ade80;
+      --accent-dark: #166534;
+      --border: #2c3f36;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--surface) 0%, #102a1d 100%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(74, 222, 128, 0.14);
+      color: var(--accent);
+      border: 1px solid rgba(74, 222, 128, 0.35);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 0.85rem;
+    }
+
+    h1 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 72ch;
+      margin-bottom: 1.4rem;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 8px;
+      transition: transform 0.12s ease, opacity 0.12s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #07190e;
+    }
+
+    .btn-secondary {
+      background-color: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    section {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.9rem;
+      color: var(--accent);
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      margin-top: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    ul, ol {
+      padding-left: 1.35rem;
+      color: var(--muted);
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+    }
+
+    strong {
+      color: var(--text);
+    }
+
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background-color: #0b120f;
+      color: #d1fae5;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    code {
+      padding: 0.12rem 0.38rem;
+      font-size: 0.88em;
+    }
+
+    pre {
+      padding: 0.9rem 1rem;
+      overflow-x: auto;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      margin: 0.65rem 0 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 0.6rem;
+    }
+
+    .card {
+      background-color: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .note {
+      background-color: rgba(74, 222, 128, 0.08);
+      border-left: 3px solid var(--accent);
+      padding: 0.85rem 1rem;
+      border-radius: 0 8px 8px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 0.8rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">PROG 409 · Laboratorio Semana 15 · Unity 6 &amp; Android</span>
+      <h1>Finca Lérida — Recorrido Virtual 360° y Garaje</h1>
+      <p class="subtitle">
+        Prototipo interactivo desarrollado en <strong>Unity 6</strong> con <strong>URP</strong>, sistema de entrada nuevo
+        (<em>Input System</em>), navegación 360°, exploración del garaje/bodega con ajuste de altura y controles
+        adaptados para PC y dispositivos Android.
+      </p>
+      <div class="btn-group">
+        <!-- Reemplaza el href cuando publiques tu Release en GitHub (v1.0.0) -->
+        <a class="btn btn-primary" href="https://github.com/0325-WQ/finca_lerida-unity/releases/latest" target="_blank" rel="noopener">
+          Descargar APK para Android
+        </a>
+        <a class="btn btn-secondary" href="https://github.com/0325-WQ/finca_lerida-unity" target="_blank" rel="noopener">
+          Ver Repositorio en GitHub
+        </a>
+      </div>
+    </header>
+
+    <section>
+      <h2>1. Arquitectura y Contenido de la Escena</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Entorno y Navegación</h3>
+          <p>Escena configurada con <strong>Skybox 360°</strong>, recorrido libre/interactivo, área de garaje/bodega y limitación de altura de cámara sobre terreno y estructuras.</p>
+        </div>
+        <div class="card">
+          <h3>Controles Multiplataforma</h3>
+          <p>Script <code>FincaLeridaTourAR.cs</code> integrado con el nuevo <em>Input System</em> para teclado/ratón en PC y controles táctiles/botones en pantalla en Android.</p>
+        </div>
+        <div class="card">
+          <h3>Compilación Android</h3>
+          <p>Configuración orientada a <strong>Android (API 24+, IL2CPP, ARM64)</strong> con interfaz adaptable y generación de paquete <code>.apk</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. Flujo de Trabajo en Git y GitHub</h2>
+      <p>
+        Para mantener el repositorio limpio y ordenado, se utiliza un archivo <code>.gitignore</code> que excluye carpetas
+        pesadas o generadas automáticamente por Unity (como <code>Library/</code>, <code>Temp/</code>, <code>Logs/</code>,
+        <code>UserSettings/</code> y binarios <code>*.apk</code>).
+      </p>
+      <ol>
+        <li><strong>Inicialización y rama <code>main</code>:</strong> se inicializó el repositorio y se subió la base del proyecto a <code>origin/main</code>.</li>
+        <li><strong>Rama de trabajo <code>feature/*</code>:</strong> los cambios y ajustes se desarrollan en ramas dedicadas, por ejemplo <code>feature/correccion-camara-apk</code>.</li>
+        <li><strong>Pull Request y fusión:</strong> se abre el <em>Pull Request</em> hacia <code>main</code> en GitHub, se revisa y se fusiona para registrar la trazabilidad del trabajo.</li>
+      </ol>
+      <pre><code>git checkout main
+git add index.html
+git commit -m "docs: agregar pagina de presentacion para GitHub Pages"
+git push origin main</code></pre>
+    </section>
+
+    <section>
+      <h2>3. Publicación del APK mediante GitHub Releases</h2>
+      <p>
+        Dado que los archivos <code>.apk</code> se excluyen del control de código fuente mediante <code>.gitignore</code>, la
+        distribución pública se realiza desde <strong>GitHub Releases</strong>:
+      </p>
+      <ol>
+        <li>Abre el repositorio en GitHub y entra a <strong>Releases → Create a new release</strong>.</li>
+        <li>Crea la etiqueta <code>v1.0.0</code> apuntando a la rama <code>main</code> y escribe un título descriptivo (por ejemplo, <em>Finca Lérida Tour v1.0.0 — Android APK</em>).</li>
+        <li>Arrastra el archivo <code>.apk</code> compilado al área de adjuntos (<em>Attach binaries</em>) y haz clic en <strong>Publish release</strong>.</li>
+        <li>Copia el enlace del archivo adjunto o usa <code>/releases/latest</code> en el botón de descarga de esta página.</li>
+      </ol>
+      <div class="note">
+        <strong>Nota sobre GitHub Pages:</strong> Esta página web funciona como portal informativo y de descarga del proyecto; la ejecución nativa de la aplicación de Unity se realiza instalando el archivo <code>.apk</code> en un dispositivo Android.
+      </div>
+    </section>
+
+    <footer>
+      Proyecto Académico — Finca Lérida · Repositorio: <code>0325-WQ/finca_lerida-unity</code>
+    </footer>
+  </div>
+</body>
+</html>
